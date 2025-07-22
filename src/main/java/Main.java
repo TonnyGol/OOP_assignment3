@@ -24,11 +24,11 @@ public class Main {
         meta.addComponent(microservice);
 
 
-        meta.addRelation(new Relation("flows to", RelationType.CONNECTS, createCustomer, getCustomerInfo));
-        meta.addRelation(new Relation("flows to", RelationType.CONNECTS, getCustomerInfo, validateCustomerInfo));
-        meta.addRelation(new Relation("flows to", RelationType.CONNECTS, validateCustomerInfo, storeCustomer));
-        meta.addRelation(new Relation("outputs", RelationType.CONNECTS, storeCustomer, customer1));
-        meta.addRelation(new Relation("uses", RelationType.ASSOCIATION, storeCustomer, microservice));
+        meta.addRelation(new Relation("flows to", RelationType.ASSOCIATION, createCustomer, getCustomerInfo));
+        meta.addRelation(new Relation("flows to", RelationType.ASSOCIATION, getCustomerInfo, validateCustomerInfo));
+        meta.addRelation(new Relation("flows to", RelationType.ASSOCIATION, validateCustomerInfo, storeCustomer));
+        meta.addRelation(new Relation("outputs", RelationType.ASSOCIATION, storeCustomer, customer1));
+        meta.addRelation(new Relation("uses", RelationType.GROUPING, storeCustomer, microservice));
 
 
         meta.printRelations();
@@ -59,7 +59,7 @@ public class Main {
                 case "2":
                     System.out.print("Enter relation name: ");
                     String relName = scanner.nextLine();
-                    System.out.print("Enter relation type (CONNECTS, ASSOCIATION, GROUPING): ");
+                    System.out.print("Enter relation type (ASSOCIATION, GROUPING): ");
                     String relType = scanner.nextLine();
                     System.out.print("From component: ");
                     String from = scanner.nextLine();

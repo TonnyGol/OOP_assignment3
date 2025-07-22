@@ -3,7 +3,6 @@ import java.util.List;
 
 // Relation enum
 enum RelationType {
-    CONNECTS,
     ASSOCIATION,
     GROUPING
 }
